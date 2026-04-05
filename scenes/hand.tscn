@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dymllhh0ixm68"]
+
+[ext_resource type="Script" uid="uid://bpt8ppnc8h5sk" path="res://scripts/hand.gd" id="1_eyfoh"]
+
+[node name="Hand" type="Node2D" unique_id=316002]
+script = ExtResource("1_eyfoh")
+
+[node name="StartingPos" type="Node2D" parent="." unique_id=447201227]

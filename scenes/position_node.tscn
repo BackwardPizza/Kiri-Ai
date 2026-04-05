@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://0m67r4y2swu7"]
+
+[ext_resource type="Texture2D" uid="uid://lqhwcpha0brg" path="res://assets/dot-sheet.png" id="1_h16tj"]
+[ext_resource type="Script" uid="uid://bmfpgrl6148k5" path="res://scripts/position_node.gd" id="1_m56a8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m56a8"]
+atlas = ExtResource("1_h16tj")
+region = Rect2(0, 0, 14, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h16tj"]
+atlas = ExtResource("1_h16tj")
+region = Rect2(14, 0, 14, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xkjp"]
+atlas = ExtResource("1_h16tj")
+region = Rect2(28, 0, 14, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7xkjp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m56a8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_h16tj")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_7xkjp")
+}],
+"loop": true,
+"name": &"selected",
+"speed": 5.0
+}]
+
+[node name="positionNode" type="Node2D" unique_id=1288989545]
+script = ExtResource("1_m56a8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1942601071]
+sprite_frames = SubResource("SpriteFrames_7xkjp")
+animation = &"selected"
+autoplay = "default"
+frame_progress = 0.1940588

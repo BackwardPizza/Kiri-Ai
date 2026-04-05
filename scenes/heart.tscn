@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bjabn8twsu4p1"]
+
+[ext_resource type="Texture2D" uid="uid://bd8xohk2fsa35" path="res://assets/hearth.png" id="1_v30as"]
+[ext_resource type="Script" uid="uid://bmyuvpwyursfx" path="res://scripts/heart.gd" id="1_ycbwg"]
+
+[node name="Heart" type="Node2D" unique_id=691965635]
+script = ExtResource("1_ycbwg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1753756429]
+texture = ExtResource("1_v30as")

@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bdr5d1frmlabq"]
+
+[ext_resource type="PackedScene" uid="uid://bnld4cug5awg4" path="res://scenes/position_array.tscn" id="1_p57ef"]
+[ext_resource type="PackedScene" uid="uid://h7wxo8s20fv8" path="res://scenes/trainee.tscn" id="2_p57ef"]
+[ext_resource type="PackedScene" uid="uid://bljw5iyxy3b51" path="res://scenes/health.tscn" id="2_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://dovm01lqt4j85" path="res://scenes/card.tscn" id="4_0tnpc"]
+[ext_resource type="Script" uid="uid://x7pim2pivrc7" path="res://scripts/attack_1.gd" id="6_kvpfn"]
+[ext_resource type="Script" uid="uid://kj1mdtlrgqyo" path="res://scripts/attack_2.gd" id="7_u5sy4"]
+[ext_resource type="Script" uid="uid://4u3xd1noceod" path="res://scripts/attack_3.gd" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://dymllhh0ixm68" path="res://scenes/hand.tscn" id="9_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://v66xx1vxhnp3" path="res://scenes/card_slot.tscn" id="10_vtaks"]
+[ext_resource type="Texture2D" uid="uid://dumh1fa76l8gn" path="res://assets/dojo.png" id="11_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://cdlfcyfavo6th" path="res://scenes/play_turn_button.tscn" id="12_dinhu"]
+[ext_resource type="PackedScene" uid="uid://dbjkp5kj7vwgh" path="res://scenes/seagull.tscn" id="12_kvuet"]
+
+[node name="Game" type="Node2D" unique_id=1173060020]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=954983065]
+zoom = Vector2(4, 4)
+
+[node name="PositionArray" parent="." unique_id=517442535 instance=ExtResource("1_p57ef")]
+position = Vector2(0, 25)
+length = 7
+
+[node name="Player" parent="." unique_id=43614024 instance=ExtResource("2_p57ef")]
+
+[node name="Enemy" parent="." unique_id=1621423655 instance=ExtResource("2_p57ef")]
+node_index = -1
+enemy = true
+
+[node name="Health" parent="." unique_id=568925575 instance=ExtResource("2_u5sy4")]
+position = Vector2(-130, -76)
+
+[node name="Card" parent="." unique_id=1381102920 instance=ExtResource("4_0tnpc")]
+position = Vector2(-59, 73)
+scale = Vector2(0.75, 0.75)
+script = ExtResource("6_kvpfn")
+
+[node name="Card2" parent="." unique_id=2049742251 instance=ExtResource("4_0tnpc")]
+position = Vector2(73, 71)
+scale = Vector2(0.75, 0.75)
+script = ExtResource("7_u5sy4")
+
+[node name="Card3" parent="." unique_id=2315121 instance=ExtResource("4_0tnpc")]
+position = Vector2(-10, 71)
+scale = Vector2(0.75, 0.75)
+script = ExtResource("8_gee14")
+
+[node name="CardSlot" parent="." unique_id=1395873770 instance=ExtResource("10_vtaks")]
+position = Vector2(-120, -53)
+scale = Vector2(0.5, 0.5)
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1331198677]
+z_index = -100
+position = Vector2(0, -13.000003)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("11_kvpfn")
+
+[node name="Play Turn Button" parent="." unique_id=138510213 instance=ExtResource("12_dinhu")]
+position = Vector2(-121, 34)
+
+[node name="Hand" parent="." unique_id=316002 instance=ExtResource("9_0tnpc")]
+position = Vector2(0, 71)
+
+[node name="Seagull" parent="." unique_id=1938922703 instance=ExtResource("12_kvuet")]
+position = Vector2(114, -67)

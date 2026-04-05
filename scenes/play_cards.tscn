@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ck5nc14v8tyot"]
+
+[ext_resource type="Script" uid="uid://ct1ex06q6vx1" path="res://scripts/card_slot.gd" id="1_dfhmw"]
+[ext_resource type="Script" uid="uid://beapd74gnr40k" path="res://scripts/play_cards.gd" id="1_k26pd"]
+[ext_resource type="Texture2D" uid="uid://dli7qv4lci4we" path="res://assets/frame.png" id="2_k26pd"]
+[ext_resource type="PackedScene" uid="uid://cdlfcyfavo6th" path="res://scenes/play_turn_button.tscn" id="4_mgvd8"]
+
+[node name="PlayCards" type="Node2D" unique_id=292445122]
+script = ExtResource("1_k26pd")
+
+[node name="First" type="Node2D" parent="." unique_id=1556556756]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_dfhmw")
+metadata/_custom_type_script = "uid://ct1ex06q6vx1"
+
+[node name="Sprite2D" type="Sprite2D" parent="First" unique_id=2013225975]
+texture = ExtResource("2_k26pd")
+
+[node name="Second" type="Node2D" parent="." unique_id=1226803910]
+position = Vector2(0, 36)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_dfhmw")
+metadata/_custom_type_script = "uid://ct1ex06q6vx1"
+
+[node name="Sprite2D" type="Sprite2D" parent="Second" unique_id=1973207327]
+texture = ExtResource("2_k26pd")
+
+[node name="Play Turn Button" parent="." unique_id=138510213 instance=ExtResource("4_mgvd8")]
+position = Vector2(0, 70)

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://v66xx1vxhnp3"]
+
+[ext_resource type="Script" uid="uid://ct1ex06q6vx1" path="res://scripts/card_slot.gd" id="1_cypty"]
+
+[node name="CardSlot" type="Node2D" unique_id=1395873770]
+script = ExtResource("1_cypty")

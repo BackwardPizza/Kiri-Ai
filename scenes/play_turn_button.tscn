@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cdlfcyfavo6th"]
+
+[ext_resource type="Script" uid="uid://b7l4hxenu16ed" path="res://scripts/play_turn_button.gd" id="1_1x221"]
+[ext_resource type="Texture2D" uid="uid://1yde5d0fykix" path="res://assets/accept.png" id="1_pkjgf"]
+
+[node name="Play Turn Button" type="Node2D" unique_id=138510213]
+script = ExtResource("1_1x221")
+
+[node name="Button" type="Button" parent="." unique_id=713762208]
+offset_left = -16.000002
+offset_top = -8.0
+offset_right = -8.000002
+scale = Vector2(3.9599981, 1.9007956)
+focus_mode = 0
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Button" unique_id=1858914706]
+position = Vector2(4, 4)
+scale = Vector2(0.23999876, 0.6399979)
+texture = ExtResource("1_pkjgf")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dovm01lqt4j85"]
+
+[ext_resource type="Texture2D" uid="uid://cdajmxe5871y4" path="res://assets/cards.png" id="1_d81rb"]
+[ext_resource type="Script" uid="uid://c2gd4u3v6wv7a" path="res://scripts/card.gd" id="1_ktuci"]
+[ext_resource type="Texture2D" uid="uid://blgdp2cr4nmqr" path="res://assets/rotate_icon.png" id="2_6u4wf"]
+
+[node name="Card" type="Node2D" unique_id=1381102920]
+script = ExtResource("1_ktuci")
+
+[node name="Button" type="Button" parent="." unique_id=679116836]
+offset_left = -24.0
+offset_top = -34.0
+offset_right = 24.0
+offset_bottom = 32.0
+focus_mode = 0
+flat = true
+
+[node name="Base" type="Sprite2D" parent="Button" unique_id=735963050]
+position = Vector2(24, 33)
+hframes = 9
+
+[node name="Image" type="Sprite2D" parent="Button" unique_id=1382338453]
+position = Vector2(24, 33)
+texture = ExtResource("1_d81rb")
+hframes = 9
+
+[node name="Rotate Button" type="Button" parent="." unique_id=1351393380]
+visible = false
+offset_left = -7.0
+offset_top = -38.0
+offset_right = 1.0
+offset_bottom = -30.0
+scale = Vector2(1.7600002, 1.7600002)
+focus_mode = 0
+
+[node name="Rotate_Icon" type="Sprite2D" parent="Rotate Button" unique_id=696208313]
+position = Vector2(3.9772718, 3.9772718)
+scale = Vector2(0.34090897, 0.34090897)
+texture = ExtResource("2_6u4wf")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Rotate Button" to="." method="_on_rotate_button_pressed"]

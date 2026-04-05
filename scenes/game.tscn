@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bdr5d1frmlabq"]
+
+[ext_resource type="PackedScene" uid="uid://bnld4cug5awg4" path="res://scenes/battlefield.tscn" id="1_p57ef"]
+[ext_resource type="PackedScene" uid="uid://ck5nc14v8tyot" path="res://scenes/play_cards.tscn" id="2_dinhu"]
+[ext_resource type="PackedScene" uid="uid://h7wxo8s20fv8" path="res://scenes/trainee.tscn" id="2_p57ef"]
+[ext_resource type="PackedScene" uid="uid://bljw5iyxy3b51" path="res://scenes/health.tscn" id="2_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://dymllhh0ixm68" path="res://scenes/hand.tscn" id="9_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://dumh1fa76l8gn" path="res://assets/dojo.png" id="11_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://dbjkp5kj7vwgh" path="res://scenes/seagull.tscn" id="12_kvuet"]
+
+[node name="Game" type="Node2D" unique_id=1173060020]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=954983065]
+zoom = Vector2(4, 4)
+
+[node name="Battlefield" parent="." unique_id=517442535 instance=ExtResource("1_p57ef")]
+position = Vector2(0, 25)
+length = 7
+
+[node name="PlayCards" parent="." unique_id=292445122 instance=ExtResource("2_dinhu")]
+position = Vector2(-126, -49)
+
+[node name="Hand" parent="." unique_id=316002 instance=ExtResource("9_0tnpc")]
+position = Vector2(0, 71)
+
+[node name="Player" parent="." unique_id=43614024 instance=ExtResource("2_p57ef")]
+
+[node name="Enemy" parent="." unique_id=1621423655 instance=ExtResource("2_p57ef")]
+node_index = -1
+enemy = true
+
+[node name="Health" parent="." unique_id=568925575 instance=ExtResource("2_u5sy4")]
+position = Vector2(-130, -76)
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1331198677]
+z_index = -100
+position = Vector2(0, -13.000003)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("11_kvpfn")
+
+[node name="Seagull" parent="." unique_id=1938922703 instance=ExtResource("12_kvuet")]
+position = Vector2(114, -65)
+scale = Vector2(0.64, 0.64)
