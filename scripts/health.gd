@@ -1,6 +1,7 @@
 class_name Health extends Node2D
 
 var current_health : Array[Node2D] = []
+var enemy := false
 
 func update_health(new_value: int) -> void:
 	while current_health.size() != new_value:
@@ -10,9 +11,9 @@ func update_health(new_value: int) -> void:
 			increase()
 
 func increase() -> bool:
-	print("increase")
 	var heart = preload("res://scenes/heart.tscn").instantiate()
 	heart.index = current_health.size()
+	if enemy: heart.length_between *= -1.0
 	add_child(heart)
 	current_health.append(heart)
 	

@@ -1,6 +1,5 @@
 class_name Attack_2 extends Card
-
-var reach := Vector2(1, 1)
 	
 func init() -> void:
+	effected_area = Vector2(1, 1)
 	image.frame = 3

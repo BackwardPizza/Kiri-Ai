@@ -11,33 +11,36 @@
 [node name="Game" type="Node2D" unique_id=1173060020]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=954983065]
-zoom = Vector2(4, 4)
+zoom = Vector2(3, 3)
 
 [node name="Battlefield" parent="." unique_id=517442535 instance=ExtResource("1_p57ef")]
-position = Vector2(0, 25)
-length = 7
+position = Vector2(0, 23)
 
 [node name="PlayCards" parent="." unique_id=292445122 instance=ExtResource("2_dinhu")]
-position = Vector2(-126, -49)
+position = Vector2(-169, -70)
 
 [node name="Hand" parent="." unique_id=316002 instance=ExtResource("9_0tnpc")]
-position = Vector2(0, 71)
+position = Vector2(0, 94)
 
 [node name="Player" parent="." unique_id=43614024 instance=ExtResource("2_p57ef")]
+node_index = 2
 
-[node name="Enemy" parent="." unique_id=1621423655 instance=ExtResource("2_p57ef")]
-node_index = -1
+[node name="Enemy" parent="." unique_id=1860866100 instance=ExtResource("2_p57ef")]
+node_index = 4
 enemy = true
+health = 4
 
-[node name="Health" parent="." unique_id=568925575 instance=ExtResource("2_u5sy4")]
-position = Vector2(-130, -76)
+[node name="PlayerHealth" parent="." unique_id=568925575 instance=ExtResource("2_u5sy4")]
+position = Vector2(-178, -97)
+
+[node name="EnemyHealth" parent="." unique_id=1883457874 instance=ExtResource("2_u5sy4")]
+position = Vector2(179, -95)
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1331198677]
 z_index = -100
-position = Vector2(0, -13.000003)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 texture = ExtResource("11_kvpfn")
 
 [node name="Seagull" parent="." unique_id=1938922703 instance=ExtResource("12_kvuet")]
-position = Vector2(114, -65)
-scale = Vector2(0.64, 0.64)
+modulate = Color(0.6321235, 0.6321235, 0.6321234, 1)
+position = Vector2(163, -102)
