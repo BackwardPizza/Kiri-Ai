@@ -51,6 +51,27 @@ func action(card: Card) -> void:
 	if hand.add_card(card):
 		remove_card(card)
 		
+func play_cards(index : int) -> void:
+	var player_card : Card = slots[index]
+	var enemy_card: Card = enemy_cards[index]
+		
+	if player_card.priority <= enemy_card.priority:
+		if player_card is Attack:
+			if player_card.will_hit() and enemy_card.will_hit():
+				pass
+			else:
+				player_card.effect()
+				enemy_card.effect()
+		else:
+			player_card.effect()
+			enemy_card.effect()
+		
+	else:
+		enemy_card.effect()
+		player_card.effect()
+		
+	action(player_card)
+		
 func play_turn() -> void:
 	print("Play turn")
 	
@@ -58,17 +79,5 @@ func play_turn() -> void:
 	
 	if slots[0] and slots[1]:
 		if enemy_cards[0] and enemy_cards[1]:
-			
-			print("Executing Players First Card: ", slots[0].name)
-			slots[0].effect()
-			action(slots[0])
-			
-			print("Executing Enemys First Card: ", enemy_cards[0].name)
-			enemy_cards[0].effect()
-			
-			print("Executing Players Second Card: ", slots[1].name)
-			slots[1].effect()
-			action(slots[1])
-			
-			print("Executing Enemys Second Card: ", enemy_cards[1].name)
-			enemy_cards[0].effect()
+			play_cards(0)
+			play_cards(1)

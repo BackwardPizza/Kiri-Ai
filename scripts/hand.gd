@@ -12,6 +12,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	center_cards()
 	angle_cards()
+	layer_cards()
 		
 
 func add_card(card : Card) -> bool:
@@ -57,3 +58,7 @@ func angle_cards() -> void:
 	for child in starting_pos.get_children():
 		child.position.x = child.get_index() * distance_between_cards
 		child.rotation = 0.05 * (child.get_index() - half)
+		
+func layer_cards() -> void:
+	for child : Node2D in starting_pos.get_children():
+		child.z_index = 100 + child.get_index()

@@ -21,6 +21,10 @@ func _ready() -> void:
 	init()
 	change_stance()
 	
+	battlefield = find_battlefield()
+	if battlefield:
+		move_to_location(battlefield.get_child(node_index))
+	
 	if enemy:
 		play_cards = get_parent().find_child("PlayCards")
 		player = get_parent().find_child("Player")
@@ -28,15 +32,14 @@ func _ready() -> void:
 		health_display.enemy = enemy
 		anim.flip_h = true
 		anim.offset += Vector2(-18.0, 0)
+		battlefield.enemy = self
 	else:
 		health_display = get_parent().find_child("PlayerHealth")
+		battlefield.player = self
 		
 	health_display.update_health(health)
 	
-	battlefield = find_line_array()
-	if battlefield:
-		var result = battlefield.get_nodes_at_location(self, Vector2(0, 1))
-		set_location_node(result[0])
+
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,20 +47,16 @@ func init() -> void:
 	pass
 
 func _process(_delta: float) -> void:
-	move_to()
+	move()
 	if anim.animation == stance_list[stance_index] + "_attack" and anim.animation_finished:
 		anim.play(stance_list[stance_index] + "_idle")
 		
 
-func find_line_array() -> Node2D:
+func find_battlefield() -> Node2D:
 	return get_parent().find_child("Battlefield")
 	
 func set_location_node(node: Node2D) -> void:
-	if location_node and location_node is PositionNode:
-		location_node.occupied = null
-	
 	location_node = node
-	location_node.occupied = self
 	node_index = location_node.get_index()
 	
 	
@@ -69,6 +68,7 @@ func change_stance() -> void:
 	
 func attack() -> void:
 	anim.play(stance_list[stance_index] + "_attack")
+
 	
 func take_damage(damage : int) -> void:
 	health -= damage
@@ -82,3 +82,14 @@ func die() -> void:
 	
 func plan_move() -> void:
 	pass
+	
+func move_to_location(new_location_node: PositionNode) -> void:
+		set_location_node(new_location_node)
+		new_location_node.occupy(self)
+		node_index = new_location_node.get_index()
+		
+func check_move_passed(index : int) -> bool:
+	if enemy:
+		return index > node_index
+	else:
+		return index < node_index

@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cdajmxe5871y4" path="res://assets/cards.png" id="1_d81rb"]
 [ext_resource type="Script" uid="uid://c2gd4u3v6wv7a" path="res://scripts/card.gd" id="1_ktuci"]
 [ext_resource type="Texture2D" uid="uid://blgdp2cr4nmqr" path="res://assets/rotate_icon.png" id="2_6u4wf"]
+[ext_resource type="Texture2D" uid="uid://cjsogukndqt1c" path="res://assets/card_shadow.png" id="2_kg30u"]
 
 [node name="Card" type="Node2D" unique_id=1381102920]
 script = ExtResource("1_ktuci")
@@ -14,6 +15,11 @@ offset_right = 24.0
 offset_bottom = 32.0
 focus_mode = 0
 flat = true
+
+[node name="Shadow" type="Sprite2D" parent="Button" unique_id=877041691]
+modulate = Color(1, 1, 1, 0.3529412)
+position = Vector2(22, 35)
+texture = ExtResource("2_kg30u")
 
 [node name="Base" type="Sprite2D" parent="Button" unique_id=735963050]
 position = Vector2(24, 33)

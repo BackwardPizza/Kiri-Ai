@@ -20,6 +20,8 @@ func plan_move() -> void:
 				
 	if not deck:
 		return
+		
+	var cards = deck.get_children()
 	
 	
 	var distance_between_fighters = abs(node_index - player.node_index)
@@ -27,25 +29,30 @@ func plan_move() -> void:
 	
 	var first_card : Card = null
 	
-	for card : Card in deck.get_children():
-		print(card.effected_area)
-		if abs(card.effected_area.length()) >= distance_between_fighters:
+	for card : Card in cards:
+		if card is Attack and card.will_hit():
 			print("Found card with range: ", card.effected_area)
 			first_card = card
+			cards.erase(card)
 			break
 	
 	if not first_card:
 		print("Could not reach with any card. First card is set to Move 1")
-		first_card = deck.get_child(3)
+		for card : Card in cards:
+			if card is Move:
+				first_card = card
+				cards.erase(card)
+				break
 		
 	play_cards.enemy_cards[0] = first_card
 	
 	var second_card : Card = null
 	
-	for card : Card in deck.get_children():
-		if abs(card.effected_area.length()) >= distance_between_fighters:
+	for card : Card in cards:
+		if card is Attack and card.will_hit():
 			print("Found card with range: ", card.effected_area)
 			second_card = card
+			cards.erase(card)
 			break
 	
 	if not second_card:

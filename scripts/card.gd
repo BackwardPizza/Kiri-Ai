@@ -4,6 +4,8 @@ class_name Card extends Actor
 @onready var image: Sprite2D = $Button/Image
 @onready var rotate_button: Button = $"Rotate Button"
 
+var priority : int = 1
+
 var flipped := false
 var can_rotate := false
 var effected_area := Vector2.ZERO
@@ -17,21 +19,19 @@ func init() -> void:
 	pass
 	
 func _process(_delta: float) -> void:
-	move_to()
+	move()
 	refresh_effected_nodes()
 	on_hover()
 	
 	
 func effect() -> void:
-	#var fighter: Fighter = get_parent().deck_owner
-	#fighter.attack()
-	
 	refresh_effected_nodes()
 	
 	for node in effected_nodes:
-		if node.occupied:
-			var enemy = node.occupied
-			enemy.take_damage(1)
+		for fighter in node.occupied:
+			if fighter != get_parent().deck_owner:
+				fighter.take_damage(1)
+			
 
 
 func get_effected_battlefield_nodes() -> Array[PositionNode]:
@@ -43,19 +43,20 @@ func get_effected_battlefield_nodes() -> Array[PositionNode]:
 	return []
 	
 func refresh_effected_nodes() -> void:
-	refresh_effected_area()
 	effected_nodes = get_effected_battlefield_nodes()
-
-func refresh_effected_area() -> void:
-	pass
 
 func load_textures() -> void:
 	var texture = load("res://assets/cards.png")
 	base.texture = texture
 	image.texture = texture
+	
+func was_flipped() -> void:
+	flipped = not flipped
+	image.flip_v = flipped
 
 func on_hover() -> void:
 	if context == self or not context: return
+	if is_moving: return
 	
 	if button.is_hovered() or rotate_button.is_hovered():
 		rotate_button.visible = can_rotate
@@ -66,8 +67,7 @@ func on_hover() -> void:
 		z_index = 1000
 		
 		for node in effected_nodes:
-			if node:
-				node.selected = true
+			node.selected = true
 		
 	else:
 		rotate_button.visible = false
@@ -76,12 +76,12 @@ func on_hover() -> void:
 		z_index = location_node.z_index
 		
 		for node in effected_nodes:
-			if node and node.prev_selected:
+			if node.prev_selected:
 				node.selected = false
 
 func _on_button_pressed() -> void:
+	is_moving = true
 	context.action(self)
 
 func _on_rotate_button_pressed() -> void:
-	flipped = not flipped
-	image.flip_v = flipped
+	was_flipped()

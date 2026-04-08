@@ -7,6 +7,10 @@
 atlas = ExtResource("1_h16tj")
 region = Rect2(0, 0, 14, 9)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_67i4p"]
+atlas = ExtResource("1_h16tj")
+region = Rect2(42, 0, 14, 9)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_h16tj"]
 atlas = ExtResource("1_h16tj")
 region = Rect2(14, 0, 14, 9)
@@ -26,6 +30,14 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67i4p")
+}],
+"loop": true,
+"name": &"occupied_by_both_players",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 3.0,
 "texture": SubResource("AtlasTexture_h16tj")
 }, {
@@ -42,6 +54,5 @@ script = ExtResource("1_m56a8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1942601071]
 sprite_frames = SubResource("SpriteFrames_7xkjp")
-animation = &"selected"
+animation = &"occupied_by_both_players"
 autoplay = "default"
-frame_progress = 0.1940588
