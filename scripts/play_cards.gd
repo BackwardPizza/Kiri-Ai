@@ -58,7 +58,7 @@ func play_cards(index : int) -> void:
 	if player_card.priority <= enemy_card.priority:
 		if player_card is Attack:
 			if player_card.will_hit() and enemy_card.will_hit():
-				pass
+				print("Blocked")
 			else:
 				player_card.effect()
 				enemy_card.effect()
@@ -69,8 +69,9 @@ func play_cards(index : int) -> void:
 	else:
 		enemy_card.effect()
 		player_card.effect()
-		
-	action(player_card)
+	
+	if enemy_card is Attack:
+		await enemy.anim.animation_finished
 		
 func play_turn() -> void:
 	print("Play turn")
@@ -81,3 +82,6 @@ func play_turn() -> void:
 		if enemy_cards[0] and enemy_cards[1]:
 			play_cards(0)
 			play_cards(1)
+			
+			action(slots[0])
+			action(slots[1])

@@ -51,6 +51,10 @@ region = Rect2(256, 0, 32, 32)
 atlas = ExtResource("2_rdjq7")
 region = Rect2(224, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_51ays"]
+atlas = ExtResource("2_rdjq7")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_y51vc"]
 atlas = ExtResource("2_rdjq7")
 region = Rect2(0, 0, 32, 32)
@@ -115,6 +119,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f6oa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51ays")
 }],
 "loop": false,
 "name": &"heaven_attack",
@@ -145,5 +152,7 @@ metadata/_custom_type_script = "uid://dh6ptdtkw60w2"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=280760403]
 position = Vector2(9, -16)
 sprite_frames = SubResource("SpriteFrames_51ays")
-animation = &"heaven_idle"
+animation = &"heaven_attack"
 autoplay = "heaven_idle"
+frame = 4
+frame_progress = 1.0

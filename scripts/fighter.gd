@@ -48,9 +48,11 @@ func init() -> void:
 
 func _process(_delta: float) -> void:
 	move()
-	if anim.animation == stance_list[stance_index] + "_attack" and anim.animation_finished:
-		anim.play(stance_list[stance_index] + "_idle")
-		
+	var opponent = get_parent().find_child("Enemy")
+	if not opponent == self:
+		if node_index == opponent.node_index:
+			global_position.x = location_node.global_position.x - 10.0
+			opponent.global_position.x = location_node.global_position.x + 10.0
 
 func find_battlefield() -> Node2D:
 	return get_parent().find_child("Battlefield")
@@ -61,10 +63,10 @@ func set_location_node(node: Node2D) -> void:
 	
 	
 func change_stance() -> void:
-	anim.play(stance_list[stance_index] + "_idle")
 	stance_index += 1
 	if stance_index >= stance_list.size():
 		stance_index = 0
+	anim.play(stance_list[stance_index] + "_idle")
 	
 func attack() -> void:
 	anim.play(stance_list[stance_index] + "_attack")

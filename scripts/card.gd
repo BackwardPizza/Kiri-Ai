@@ -25,13 +25,17 @@ func _process(_delta: float) -> void:
 	
 	
 func effect() -> void:
+	attack()
 	refresh_effected_nodes()
 	
 	for node in effected_nodes:
 		for fighter in node.occupied:
 			if fighter != get_parent().deck_owner:
 				fighter.take_damage(1)
-			
+
+func attack() -> void:
+	var fighter : Fighter = get_parent().deck_owner
+	fighter.attack()
 
 
 func get_effected_battlefield_nodes() -> Array[PositionNode]:
