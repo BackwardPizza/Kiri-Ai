@@ -11,7 +11,7 @@
 [node name="Game" type="Node2D" unique_id=1173060020]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=954983065]
-zoom = Vector2(3, 3)
+zoom = Vector2(5, 5)
 
 [node name="Battlefield" parent="." unique_id=517442535 instance=ExtResource("1_p57ef")]
 position = Vector2(0, 23)
